@@ -1,0 +1,26 @@
+{
+  "name": "ects-career-portfolio",
+  "version": "1.0.0",
+  "description": "Standalone desktop career portfolio creator.",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "org.ects.careerportfolio",
+    "productName": "ECTS Career Portfolio",
+    "files": [
+      "index 1.html",
+      "style.css",
+      "script.js",
+      "main.cjs",
+      "preload.cjs",
+      "package.json"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+# Dependencies installed locally by npm
+node_modules/
+
+# Generated Electron build output
+dist/
+
+# Local Electron state and debug logs
+*.log
+*.tmp
