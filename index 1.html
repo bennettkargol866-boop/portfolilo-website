@@ -32,6 +32,7 @@
     @media(max-width:850px){.app-header-inner{gap:8px}.header-student{display:none}.header-actions{gap:5px;min-width:0}.header-actions .button-outline{padding:8px 9px;font-size:10px;white-space:nowrap}.header-actions .icon-button{padding:7px 8px}.app-header .brand{min-width:0}.app-header .brand strong{font-size:12px}.app-header .brand small{font-size:10px}}
     @media(max-width:520px){.app-header-inner{width:calc(100% - 20px)}.header-actions .button-outline{font-size:0}.header-actions .button-outline:before{font-size:16px}.header-actions .button-outline[data-action="download"]:before{content:'↓'}.header-actions .button-outline[data-action="load"]:before{content:'↑'}.header-actions .button-outline[data-action="preview"]{display:none}}
     .attachment-preview{border:1px solid var(--line);padding:18px;margin:18px 0;break-inside:avoid}.attachment-preview h3{margin-top:0}.attachment-preview iframe{display:block;width:100%;height:900px;border:1px solid var(--line);background:#f4f7f8}.attachment-preview-list>p{color:var(--muted)}
+    .document-renderer{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:14px;overflow:visible;background:#edf0ef;padding:14px}.pdf-page{display:block;max-width:100%;height:auto;box-shadow:0 2px 12px #0002;background:#fff}.document-renderer .docx-wrapper{width:100%;padding:0;background:transparent}.document-renderer .docx-wrapper>.docx{margin:0 auto 14px;max-width:100%;box-shadow:0 2px 12px #0002}.attachment-image{display:block;max-width:100%;height:auto;margin:auto}.document-preview-error{width:100%;padding:15px;background:#fff4ed;color:#873b28}.attachment-file-name{margin:0;color:var(--muted)}
   </style>
 </head>
 <body>
@@ -92,6 +93,9 @@
 
   <div id="preview-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="preview-title"><div class="modal-toolbar"><button class="button button-quiet" data-action="close-modal">← Back to editor</button><div><span id="preview-mode" class="preview-mode-label"></span><button class="button button-outline" data-action="print">Export / Print PDF <span aria-hidden="true">↗</span></button></div></div><article id="preview-content" class="preview-paper"></article></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="node_modules/jszip/dist/jszip.min.js"></script>
+  <script src="node_modules/docx-preview/dist/docx-preview.min.js"></script>
+  <script type="module" src="document-preview.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

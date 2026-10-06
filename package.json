@@ -17,12 +17,15 @@
       "index 1.html",
       "style.css",
       "script.js",
+      "document-preview.js",
       "main.cjs",
       "preload.cjs",
       "package.json"
     ]
   },
   "dependencies": {
-    "electron": "^44.5.1"
+    "docx-preview": "^0.4.1",
+    "electron": "^44.5.1",
+    "pdfjs-dist": "^6.4.299"
   }
 }

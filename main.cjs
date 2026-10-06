@@ -1,7 +1,9 @@
-const { app, BrowserWindow, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, dialog, ipcMain, protocol } = require('electron');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const zlib = require('node:zlib');
+
+protocol.registerSchemesAsPrivileged([{ scheme: 'ects', privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true, codeCache: true } }]);
 
 const dataDirectory = () => path.join(app.getPath('userData'), 'portfolio');
 const portfolioPath = () => path.join(dataDirectory(), 'portfolio.json');
@@ -103,10 +105,23 @@ async function createWindow() {
     width: 1440, height: 960, minWidth: 900, minHeight: 650,
     webPreferences: { contextIsolation: true, nodeIntegration: false, preload: path.join(__dirname, 'preload.cjs') }
   });
-  window.loadFile('index 1.html');
+  window.loadURL('ects://app/index%201.html');
 }
 
 app.whenReady().then(() => {
+  protocol.handle('ects', async request => {
+    try {
+      const url = new URL(request.url);
+      if (url.hostname !== 'app') return new Response('Not found', { status: 404 });
+      const relative = decodeURIComponent(url.pathname).replace(/^\/+/, '');
+      const target = path.resolve(__dirname, relative);
+      if (target !== __dirname && !target.startsWith(__dirname + path.sep)) return new Response('Forbidden', { status: 403 });
+      const data = await fs.readFile(target);
+      const ext = path.extname(target).toLowerCase();
+      const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.wasm': 'application/wasm', '.bcmap': 'application/octet-stream', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.otf': 'font/otf' };
+      return new Response(data, { headers: { 'Content-Type': types[ext] || 'application/octet-stream' } });
+    } catch { return new Response('Not found', { status: 404 }); }
+  });
   ipcMain.handle('portfolio:load-current', async () => {
     try { return JSON.parse(await fs.readFile(portfolioPath(), 'utf8')); }
     catch (error) { if (error.code === 'ENOENT') return null; throw new Error('The saved portfolio could not be read.'); }
