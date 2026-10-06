@@ -1,26 +1,8 @@
 # ECTS Career Portfolio Creator
 
-A static web application for creating ECTS career portfolios. It can also run as an Electron desktop app.
+A standalone Electron desktop app for creating ECTS career portfolios.
 
-## Run in a browser locally
-
-Because browser file storage requires a secure origin, use a local web server instead of opening `index.html` directly. With Python installed, run this from the project folder:
-
-```powershell
-python -m http.server 8000
-```
-
-Then visit <http://localhost:8000>.
-
-## Portfolio privacy and files
-
-The browser app saves portfolio data and uploaded files in IndexedDB on that device. The hosting service receives the static application files only; it does not receive portfolio content or attachments. Browser storage does not automatically transfer to another browser or device. Use **Save Portfolio** to download an `.ects-portfolio` ZIP containing `portfolio.json`, `manifest.json`, and the related attachments. Use **Open Portfolio** to restore it in another browser. Clearing browser site data can remove the local copy, so keep the portfolio file as a backup.
-
-## Free hosting with GitHub Pages
-
-This repository includes a GitHub Actions workflow that publishes the static app on pushes to `main`. In the GitHub repository, open **Settings → Pages** and select **GitHub Actions** as the source. The workflow publishes only `index.html`, `style.css`, `script.js`, and `browser-storage.js`.
-
-## Electron desktop app
+## Run the desktop app
 
 ```powershell
 npm install
@@ -32,3 +14,15 @@ To package a portable Windows executable:
 ```powershell
 npm run package
 ```
+
+Portfolio data is saved in Electron's application-data folder. Uploaded documents are saved there as individual files.
+
+Use **Save Portfolio** to create a `.ects-portfolio` ZIP file. It includes `portfolio.json`, a `manifest.json` relating attachments to the portfolio, and the attachment files. Use **Open Portfolio** to load one. The app asks before replacing a named portfolio.
+
+## Portfolio contents
+
+- Guided setup and ECTS program selector
+- About Me, hiring documents, work samples, credentials, accomplishments, CareerSafe, supporting academics, and CEW evidence
+- Local file attachments, listed in their portfolio section and in the preview; PDFs are shown inline in the preview
+- Portable `.ects-portfolio` open and save workflow
+- Theme and accent controls, live preview, and print to PDF

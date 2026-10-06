@@ -14,8 +14,7 @@
     "appId": "org.ects.careerportfolio",
     "productName": "ECTS Career Portfolio",
     "files": [
-      "index.html",
-      "browser-storage.js",
+      "index 1.html",
       "style.css",
       "script.js",
       "main.cjs",

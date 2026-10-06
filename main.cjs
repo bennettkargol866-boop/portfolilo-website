@@ -103,7 +103,7 @@ async function createWindow() {
     width: 1440, height: 960, minWidth: 900, minHeight: 650,
     webPreferences: { contextIsolation: true, nodeIntegration: false, preload: path.join(__dirname, 'preload.cjs') }
   });
-  window.loadFile('index.html');
+  window.loadFile('index 1.html');
 }
 
 app.whenReady().then(() => {
