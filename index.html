@@ -31,6 +31,7 @@
     body{background:var(--wash)}.landing-page{background:radial-gradient(circle at 82% 18%,#f2d9c6 0,transparent 25%),linear-gradient(135deg,#fffaf0,#edf1e8)}.landing-page:before{background-image:linear-gradient(90deg,rgba(208,91,63,.045) 1px,transparent 1px),linear-gradient(rgba(208,91,63,.045) 1px,transparent 1px)}.brand-mark{background:#263f3d;border-radius:14px 3px 14px 3px;box-shadow:4px 4px 0 #d05b3f}.privacy-note{background:#fff4e8;border-color:#efd7c1;color:#9c4a34}.eyebrow,.section-kicker{color:#c84e35}.eyebrow{background:#fff0e7}.button-primary{background:#d05b3f;border-color:#d05b3f}.button-primary:hover{background:#b84931}.landing-panel{background:#f6e8d9;border-color:#e5cdb9;box-shadow:0 24px 60px rgba(94,67,47,.15)}.portfolio-sheet{border-top-color:#d05b3f}.sheet-title span,.hero-copy h1 em,.setup-intro h1 em{color:#d05b3f}.status-dot{background:#d05b3f}.outcome-strip div{border-top-color:#d05b3f}.app-header{background:#fffdf8;border-bottom:1px solid #e6dfd2;box-shadow:0 4px 18px rgba(38,63,61,.06)}.nav-item.active{background:#f8e8df;color:#b84931;box-shadow:inset 3px 0 #d05b3f}.section-card{background:#fffdf8;border-color:#e5ded2;box-shadow:0 7px 24px rgba(38,63,61,.055)}.progress-track span{background:#d05b3f}.sidebar-progress{background:#f4eadf;border-color:#e7d5c5}.sidebar-progress-head strong{color:#c84e35}.theme-choice:nth-child(2) .theme-swatch{background:#d05b3f}.theme-choice:nth-child(3) .theme-swatch{background:#263f3d}.theme-choice:nth-child(4) .theme-swatch{background:#d6a34f}
     @media(max-width:850px){.app-header-inner{gap:8px}.header-student{display:none}.header-actions{gap:5px;min-width:0}.header-actions .button-outline{padding:8px 9px;font-size:10px;white-space:nowrap}.header-actions .icon-button{padding:7px 8px}.app-header .brand{min-width:0}.app-header .brand strong{font-size:12px}.app-header .brand small{font-size:10px}}
     @media(max-width:520px){.app-header-inner{width:calc(100% - 20px)}.header-actions .button-outline{font-size:0}.header-actions .button-outline:before{font-size:16px}.header-actions .button-outline[data-action="download"]:before{content:'↓'}.header-actions .button-outline[data-action="load"]:before{content:'↑'}.header-actions .button-outline[data-action="preview"]{display:none}}
+    .attachment-preview{border:1px solid var(--line);padding:18px;margin:18px 0;break-inside:avoid}.attachment-preview h3{margin-top:0}.attachment-preview iframe{display:block;width:100%;height:900px;border:1px solid var(--line);background:#f4f7f8}.attachment-preview-list>p{color:var(--muted)}
   </style>
 </head>
 <body>
@@ -49,7 +50,7 @@
         <p class="hero-lede">A guided workspace for organizing your story, work samples, credentials, and Career Education and Work Standards evidence, whatever ECTS pathway you choose.</p>
         <div class="hero-actions"><button class="button button-primary" data-action="start">Start my portfolio <span aria-hidden="true">→</span></button><button class="button button-quiet" data-action="demo">Explore demo portfolio</button><button class="button button-quiet board-demo-button" data-action="board-demo">Board presentation</button></div>
         <div class="outcome-strip" aria-label="ECTS pathway outcomes"><div><strong>College credit</strong><span>Keep moving forward</span></div><div><strong>Industry certification</strong><span>Prove what you can do</span></div><div><strong>Employment opportunities</strong><span>Be ready for what’s next</span></div></div>
-        <p class="microcopy">No account required. Save a backup file whenever you want, then load it again on any device.</p>
+        <p class="microcopy">Your portfolios and attachments stay in this browser on this device. Open and save portfolio files to move them between devices.</p>
       </section>
       <aside class="landing-panel" aria-label="Portfolio overview">
         <div class="panel-topline"><span class="status-dot"></span><span>ECTS pathway</span><span class="panel-year">2025–26</span></div>
@@ -73,7 +74,7 @@
         <label>Student name<input id="setup-name" required placeholder="e.g. Alex Student"></label>
         <div class="form-grid"><label>Graduation year<select id="setup-year"><option>2026</option><option>2027</option><option>2028</option><option>2029</option></select></label><label>CTE program<select id="setup-program" required></select></label></div>
         <div class="program-benefits"><span>College credit</span><span>Industry certification</span><span>Employment opportunities</span></div>
-        <div class="form-note"><span aria-hidden="true">i</span><p>Choose your ECTS pathway. Your portfolio stays in your browser unless you download a backup file.</p></div>
+        <div class="form-note"><span aria-hidden="true">i</span><p>Choose your ECTS pathway. Your portfolio and attachments are saved in this browser on this device.</p></div>
         <button class="button button-primary button-wide" type="submit">Create my portfolio <span aria-hidden="true">→</span></button>
       </form>
     </main>
@@ -81,7 +82,7 @@
 
   <div id="app" class="app-shell hidden">
     <header class="app-header">
-      <div class="app-header-inner container"><button class="mobile-menu" data-action="menu" aria-label="Open navigation">☰</button><a class="brand" href="#" data-action="home"><span class="brand-mark">ECTS</span><span><strong>Career Portfolio</strong><small>Creator</small></span></a><div class="header-student"><span id="header-student-name">Student</span><span id="header-program" class="program-pill">Computer Programming</span></div><div class="header-actions"><span id="save-status" class="save-status">Not saved</span><button class="button button-outline" data-action="download" title="Download portfolio backup">Download backup</button><button class="button button-outline" data-action="load" title="Load portfolio backup">Load backup</button><button class="icon-button" data-action="save" title="Save progress" aria-label="Save progress">↓</button><button class="button button-outline" data-action="preview">Preview <span aria-hidden="true">↗</span></button></div></div>
+      <div class="app-header-inner container"><button class="mobile-menu" data-action="menu" aria-label="Open navigation">☰</button><a class="brand" href="#" data-action="home"><span class="brand-mark">ECTS</span><span><strong>Career Portfolio</strong><small>Creator</small></span></a><div class="header-student"><span id="header-student-name">Student</span><span id="header-program" class="program-pill">Computer Programming</span></div><div class="header-actions"><span id="save-status" class="save-status">Not saved</span><button class="button button-outline" data-action="download" title="Save portfolio as an ECTS file">Save Portfolio</button><button class="button button-outline" data-action="load" title="Open an ECTS portfolio file">Open Portfolio</button><button class="icon-button" data-action="save" title="Save progress" aria-label="Save progress">↓</button><button class="button button-outline" data-action="preview">Preview <span aria-hidden="true">↗</span></button></div></div>
     </header>
     <div class="app-layout container">
       <aside id="sidebar" class="sidebar"><div class="sidebar-progress"><div class="sidebar-progress-head"><span>Portfolio progress</span><strong id="progress-label">0%</strong></div><div class="progress-track"><span id="progress-bar"></span></div><p id="progress-summary">Getting started</p></div><nav id="section-nav" aria-label="Portfolio sections"></nav><div class="sidebar-bottom"><button class="text-button" data-action="requirements">View requirements <span>↗</span></button><button class="text-button muted" data-action="reset">Reset portfolio</button></div></aside>
@@ -91,6 +92,7 @@
 
   <div id="preview-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="preview-title"><div class="modal-toolbar"><button class="button button-quiet" data-action="close-modal">← Back to editor</button><div><span id="preview-mode" class="preview-mode-label"></span><button class="button button-outline" data-action="print">Export / Print PDF <span aria-hidden="true">↗</span></button></div></div><article id="preview-content" class="preview-paper"></article></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="browser-storage.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
